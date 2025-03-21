@@ -25,47 +25,38 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
   background-position: center;
   background-size: cover;
   border-radius: 20px;
   box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
   transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
-}
 
-/* Evita que las imágenes se sobrepongan */
-.item:nth-child(1) {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  box-shadow: none;
-  z-index: 3;
-}
+  &:nth-child(1),
+  &:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+  }
 
-.item:nth-child(2) {
-  width: 200px;
-  height: 300px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.item:nth-child(n+3) {
-  z-index: 1;
-}
-
-/* Posiciones de los elementos */
-.item:nth-child(3) {
-  left: 50%;
-}
-.item:nth-child(4) {
-  left: calc(50% + 220px);
-}
-.item:nth-child(5) {
-  left: calc(50% + 440px);
-}
-.item:nth-child(6) {
-  left: calc(50% + 660px);
-  opacity: 0;
+  &:nth-child(3) {
+    left: 50%;
+  }
+  &:nth-child(4) {
+    left: calc(50% + 220px);
+  }
+  &:nth-child(5) {
+    left: calc(50% + 440px);
+  }
+  &:nth-child(6) {
+    left: calc(50% + 660px);
+    opacity: 0;
+  }
 }
 
 .content {
@@ -79,25 +70,25 @@ main {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   opacity: 0;
   display: none;
-}
 
-.content .title {
-  font-family: "Protest Strike", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-transform: uppercase;
-}
+  & .title {
+    font-family: "Protest Strike", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+  }
 
-.content .description {
-  font-family: "Inter", sans-serif;
-  background: rgba(0, 0, 0, 0.5);
-  font-optical-sizing: auto;
-  text-shadow: none;
-  line-height: 1.7;
-  margin: 1rem 0 1.5rem;
-  font-size: 1rem;
-  padding: 20px;
-  border-radius: 10px;
+  & .description {
+    font-family: "Inter", sans-serif;
+    background:rgba(0, 0, 0, 0);
+    font-optical-sizing: auto;
+    text-shadow: none;
+    line-height: 1.7;
+    margin: 1rem 0 1.5rem;
+    font-size: 1rem;
+    padding: 20px;
+    border-radius: 10px;
+  }
 }
 
 .item:nth-of-type(2) .content {
@@ -124,78 +115,77 @@ main {
   z-index: 5;
   -webkit-user-select: none;
   user-select: none;
+
+  & .btn {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    margin: 0 0.25rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(255, 1, 1, 0.3);
+    }
+  }
 }
 
-.nav .btn {
-  background-color: rgba(255, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  margin: 0 0.25rem;
-  padding: 0.75rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.nav .btn:hover {
-  background-color: rgba(255, 1, 1, 0.3);
-}
-
-/* Ajustes responsivos */
 @media (width > 650px) and (width < 900px) {
-  .content .title {
-    font-size: 1rem;
+  .content {
+    & .title {
+      font-size: 1rem;
+    }
+    & .description {
+      font-size: 0.7rem;
+    }
   }
-
-  .content .description {
-    font-size: 0.7rem;
-  }
-
   .item {
     width: 160px;
     height: 270px;
-  }
 
-  .item:nth-child(3) {
-    left: 50%;
-  }
-  .item:nth-child(4) {
-    left: calc(50% + 170px);
-  }
-  .item:nth-child(5) {
-    left: calc(50% + 340px);
-  }
-  .item:nth-child(6) {
-    left: calc(50% + 510px);
-    opacity: 0;
+    &:nth-child(3) {
+      left: 50%;
+    }
+    &:nth-child(4) {
+      left: calc(50% + 170px);
+    }
+    &:nth-child(5) {
+      left: calc(50% + 340px);
+    }
+    &:nth-child(6) {
+      left: calc(50% + 510px);
+      opacity: 0;
+    }
   }
 }
 
 @media (width < 650px) {
-  .content .title {
-    font-size: 0.9rem;
+  .content {
+    & .title {
+      font-size: 0.9rem;
+    }
+    & .description {
+      font-size: 0.65rem;
+    }
   }
-
-  .content .description {
-    font-size: 0.65rem;
-  }
-
   .item {
     width: 130px;
     height: 220px;
-  }
 
-  .item:nth-child(3) {
-    left: 50%;
-  }
-  .item:nth-child(4) {
-    left: calc(50% + 140px);
-  }
-  .item:nth-child(5) {
-    left: calc(50% + 280px);
-  }
-  .item:nth-child(6) {
-    left: calc(50% + 420px);
-    opacity: 0;
+    &:nth-child(3) {
+      left: 50%;
+    }
+    &:nth-child(4) {
+      left: calc(50% + 140px);
+    }
+    &:nth-child(5) {
+      left: calc(50% + 280px);
+    }
+    &:nth-child(6) {
+      left: calc(50% + 420px);
+      opacity: 0;
+    }
   }
 }
 
