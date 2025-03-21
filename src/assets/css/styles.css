@@ -60,6 +60,7 @@ main {
 }
 
 .content {
+  z-index: 10; /* Asegura que el texto esté por encima */
   width: min(30vw, 400px);
   position: absolute;
   top: 50%;
